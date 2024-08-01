@@ -1,0 +1,32 @@
+const byte LED=13;
+const byte SW=8;
+bool lastState=LOW;
+bool toggle=LOW;
+
+void setup() 
+{
+  pinMode(LED,OUTPUT);
+  pinMode(SW,INPUT);
+}
+
+void loop() 
+{
+  bool b1=digitalRead(SW);
+
+  if (b1)
+  {
+    delay(20);
+    bool b2 =digitalRead(SW);
+
+    if (b1==b2)
+    {
+      lastState=b1;
+    }
+  }
+  if (b1!=lastState)
+  {
+    toggle=!toggle;
+    digitalWrite(LED,toggle);
+    lastState=LOW;
+  }
+}
